@@ -8,11 +8,16 @@ public class Main {
         System.out.println("==명언 앱==");
 
         while(true) {
-            System.out.println("명령) ");
+            System.out.print("명령) ");
             String command = sc.nextLine(); //입력 받기
 
             if(command.equals("종료")){
                 break;
+            } else if (command.equals("등록")) {
+                System.out.print("명언 : ");
+                String wiseSaying = sc.nextLine();
+                System.out.print("작가 : ");
+                String author = sc.nextLine();
             }
         }
     }
