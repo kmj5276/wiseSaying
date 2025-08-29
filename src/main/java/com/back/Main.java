@@ -6,7 +6,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("==명언 앱==");
-        int no = 1;
+        int lastNo = 0;
+        String wiseSaying = "";
+        String author = "";
 
         while(true) {
             System.out.print("명령) ");
@@ -16,11 +18,16 @@ public class Main {
                 break;
             } else if (command.equals("등록")) {
                 System.out.print("명언 : ");
-                String wiseSaying = sc.nextLine();
+                wiseSaying = sc.nextLine();
                 System.out.print("작가 : ");
-                String author = sc.nextLine();
-                System.out.println(no + "번 명언이 등록되었습니다.");
-                no++;
+                author = sc.nextLine();
+                lastNo++;
+                System.out.println(lastNo + "번 명언이 등록되었습니다.");
+            } else if(command.equals("목록")){
+                System.out.println("번호 / 작가 / 명언");
+                System.out.println("----------------------");
+                System.out.println("%d / %s / %s".formatted(lastNo, author, wiseSaying));
+
             }
         }
     }
