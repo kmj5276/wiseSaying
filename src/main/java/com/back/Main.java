@@ -10,8 +10,9 @@ public class Main {
         System.out.println("==명언 앱==");
 
         int lastNo = 0;
+        int lastIndex = 0;
 
-        WiseSaying wiseSaying = null; //비어있는 WiseSaying 변수 선언
+        WiseSaying[] wiseSayings = new WiseSaying[100];
 
         while(true) {
             System.out.print("명령) ");
@@ -27,17 +28,28 @@ public class Main {
 
                 lastNo++;
 
-                wiseSaying = new WiseSaying;
+                WiseSaying wiseSaying = new WiseSaying();
                 wiseSaying.id = lastNo;
                 wiseSaying.saying = saying;
                 wiseSaying.author = author;
 
+                wiseSayings[lastIndex++] = wiseSaying;
+
                 System.out.println(lastNo + "번 명언이 등록되었습니다.");
+
             } else if(command.equals("목록")){
                 System.out.println("번호 / 작가 / 명언");
                 System.out.println("----------------------");
-                System.out.println("%d / %s / %s".formatted(wiseSaying.id, wiseSaying.author, wiseSaying.saying));
+                for(int i = 0; i < wiseSayings.length; i++){
+                    WiseSaying target = wiseSayings[i];
 
+                    if(target == null){
+                        break;
+                    }
+
+                    System.out.println("%d / %s / %s".formatted(target.id, target.author, target.saying));
+
+                }
             }
         }
     }
