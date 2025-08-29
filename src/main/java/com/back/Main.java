@@ -38,17 +38,14 @@ public class Main {
                 System.out.println(lastNo + "번 명언이 등록되었습니다.");
 
             } else if(command.equals("목록")){
+
                 System.out.println("번호 / 작가 / 명언");
                 System.out.println("----------------------");
-                for(int i = 0; i < wiseSayings.length; i++){
+
+                for(int i = lastIndex-1; i >= 0; i--){
                     WiseSaying target = wiseSayings[i];
 
-                    if(target == null){
-                        break;
-                    }
-
                     System.out.println("%d / %s / %s".formatted(target.id, target.author, target.saying));
-
                 }
             }
         }
