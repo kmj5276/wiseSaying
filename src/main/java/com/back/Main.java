@@ -4,11 +4,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
+
         System.out.println("==명언 앱==");
+
         int lastNo = 0;
-        String wiseSaying = "";
-        String author = "";
+
+        WiseSaying wiseSaying = null; //비어있는 WiseSaying 변수 선언
 
         while(true) {
             System.out.print("명령) ");
@@ -18,15 +21,22 @@ public class Main {
                 break;
             } else if (command.equals("등록")) {
                 System.out.print("명언 : ");
-                wiseSaying = sc.nextLine();
+                String saying = sc.nextLine();
                 System.out.print("작가 : ");
-                author = sc.nextLine();
+                String author = sc.nextLine();
+
                 lastNo++;
+
+                wiseSaying = new WiseSaying;
+                wiseSaying.id = lastNo;
+                wiseSaying.saying = saying;
+                wiseSaying.author = author;
+
                 System.out.println(lastNo + "번 명언이 등록되었습니다.");
             } else if(command.equals("목록")){
                 System.out.println("번호 / 작가 / 명언");
                 System.out.println("----------------------");
-                System.out.println("%d / %s / %s".formatted(lastNo, author, wiseSaying));
+                System.out.println("%d / %s / %s".formatted(wiseSaying.id, wiseSaying.author, wiseSaying.saying));
 
             }
         }
