@@ -37,21 +37,26 @@ public class App {
             System.out.println("%d / %s / %s".formatted(target.id, target.author, target.saying));
         }
     }
-        public void actionWrite () {
-            System.out.print("명언 : ");
-            String saying = sc.nextLine();
-            System.out.print("작가 : ");
-            String author = sc.nextLine();
+    public void actionWrite () {
+        System.out.print("명언 : ");
+        String saying = sc.nextLine();
+        System.out.print("작가 : ");
+        String author = sc.nextLine();
 
-            lastNo++;
+        WiseSaying wiseSaying = write(saying, author);
 
-            WiseSaying wiseSaying = new WiseSaying();
-            wiseSaying.id = lastNo;
-            wiseSaying.saying = saying;
-            wiseSaying.author = author;
+        System.out.println("%d번 명언이 등록되었습니다.".formatted(wiseSaying.id));
+    }
+    public WiseSaying write(String saying, String author) {
+        lastNo++;
 
-            wiseSayings[lastIndex++] = wiseSaying;
+        WiseSaying wiseSaying = new WiseSaying();
+        wiseSaying.id = lastNo;
+        wiseSaying.saying = saying;
+        wiseSaying.author = author;
 
-            System.out.println(lastNo + "번 명언이 등록되었습니다.");
-        }
+        wiseSayings[lastIndex++] = wiseSaying;
+
+        return wiseSaying;
+    }
 }
