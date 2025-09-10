@@ -41,17 +41,27 @@ public class App {
         String idStr = commandBits[1];
         int id = Integer.parseInt(idStr);
 
-        delete(id);
-        System.out.println("%d번 명언이 삭제되었습니다.".formatted(id));
+        boolean result = delete(id);
+
+        if(result){
+            System.out.println("%d번 명언은 존재하지 않습니다.".formatted(id));
+        } else{
+            System.out.println("%d번 명언이 삭제되었습니다.".formatted(id));
+        }
     }
 
-    public void delete(int id) {
+    public boolean delete(int id) {
         int deleteTargetIndex = -1; // 삭제하고 싶은 명언이 저장될 위치
 
         for(int i = 0; i < lastIndex; i++) {
             if(wiseSayings[i].id == id){
                 deleteTargetIndex = i;
+                break;
             }
+        }
+
+        if(deleteTargetIndex == -1){
+            return false;
         }
 
         for(int i = deleteTargetIndex; i < lastIndex; i++){
@@ -59,6 +69,8 @@ public class App {
         }
 
         lastIndex --;
+
+        return true;
     }
 
     public void actionList() {
